@@ -6,6 +6,7 @@ fi
 
 git add .
 git commit -m "Updated on: $(date '+%Y-%m-%d %H:%M:%S')"
+
 git pull --rebase origin main
 # Push changes
 git push origin main

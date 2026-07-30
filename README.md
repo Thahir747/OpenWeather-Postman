@@ -1,6 +1,6 @@
 # 🌤️ Weather API Test Automation Suite (Postman + Newman)
 
-[![Postman API Tests Execution](https://github.com/Thahir747/weather-api-tests-java/actions/workflows/postman-tests.yml/badge.svg)](https://github.com/thahir747>/OpenWeather-Postman/actions/workflows/postman-tests.yml)
+[![Postman API Tests Execution](https://github.com/Thahir747/OpenWeather-Postman/actions/workflows/postman-tests.yml/badge.svg)](https://github.com/Thahir747/OpenWeather-Postman/actions/workflows/postman-tests.yml)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/Node.js-20.x-green?style=flat&logo=node.js)
 ![Newman](https://img.shields.io/badge/CLI-Newman-orange?style=flat)
@@ -37,4 +37,4 @@ The project organizes **12 distinct test assertions** across 4 primary HTTP requ
 
 > **📊 Live Interactive Dashboard:**  
 > View the real-time test execution report hosted on GitHub Pages:  
-> 👉 **[https://thahir747.github.io/OpenWeather-Postman/](https://thahir747.github.io/OpenWeather-Postman/)**
+> 👉 **[Check Result](https://thahir747.github.io/OpenWeather-Postman/)**
