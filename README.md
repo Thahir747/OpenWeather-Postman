@@ -34,3 +34,7 @@ The project organizes **12 distinct test assertions** across 4 primary HTTP requ
 | **Total Test Count** | | | **12** |
 
 ---
+
+> **📊 Live Interactive Dashboard:**  
+> View the real-time test execution report hosted on GitHub Pages:  
+> 👉 **[https://thahir747.github.io/OpenWeather-Postman/](https://thahir747.github.io/OpenWeather-Postman/)**
