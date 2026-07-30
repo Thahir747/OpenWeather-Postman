@@ -143,10 +143,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
-              "\r",
+              
               "pm.test(\"Status code is 404\", function () {\r",
               "    pm.response.to.have.status(404);\r",
               "});\r",
@@ -195,10 +192,7 @@
           "listen": "test",
           "script": {
             "exec": [
-              "pm.test(\"Status code is 200\", function () {\r",
-              "    pm.response.to.have.status(200);\r",
-              "});\r",
-              "\r",
+              
               "let jsonData=pm.response.json();\r",
               "\r",
               "pm.test(\"Check for Error message\",function(){\r",
