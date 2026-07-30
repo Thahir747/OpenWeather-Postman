@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! -d ".git" ]; then
-  git init
-  git remote add origin https://github.com/Thahir747/OpenWeather-Postman
+    git init
+    git remote add origin https://github.com/Thahir747/OpenWeather-Postman
 fi
 
 git add .
