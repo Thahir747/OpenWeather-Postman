@@ -5,7 +5,7 @@ if [ ! -d ".git" ]; then
 fi
 
 git add .
-git commit -m "Updated on: $(date '+%Y-%m-%d %H:%M:%S')"
+git commit -m "Updated on: $(TZ="Asia/Kolkata" date '+%Y-%m-%d %I:%M:%S %p IST')"
 
 git pull --rebase origin main
 # Push changes
