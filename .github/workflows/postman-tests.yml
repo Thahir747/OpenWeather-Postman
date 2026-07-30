@@ -41,3 +41,10 @@ jobs:
         with:
           name: postman-html-report
           path: public/index.html
+
+      - name: Deploy Live Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
