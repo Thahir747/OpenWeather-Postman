@@ -1,6 +1,6 @@
 # 🌤️ Weather API Test Automation Suite (Postman + Newman)
 
-[![Postman API Tests Execution](https://github.com/<YOUR_GITHUB_USERNAME>/weather-api-tests-java/actions/workflows/postman-tests.yml/badge.svg)](https://github.com/<YOUR_GITHUB_USERNAME>/weather-api-tests-java/actions/workflows/postman-tests.yml)
+[![Postman API Tests Execution](https://github.com/<YOUR_GITHUB_USERNAME>/weather-api-tests-java/actions/workflows/postman-tests.yml/badge.svg)](https://github.com/thahir747>/OpenWeather-Postman/actions/workflows/postman-tests.yml)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/Node.js-20.x-green?style=flat&logo=node.js)
 ![Newman](https://img.shields.io/badge/CLI-Newman-orange?style=flat)

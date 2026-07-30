@@ -1,0 +1,244 @@
+{
+  "info": {
+    "_postman_id": "3caf3331-ab88-4464-9306-97c3050e63ea",
+    "name": "weather-api-tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55144869",
+    "_collection_link": "https://go.postman.co/collection/55144869-3caf3331-ab88-4464-9306-97c3050e63ea?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Current Weather for Kochi",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "let jsonData=pm.response.json();\r",
+              "\r",
+              "pm.test(\"Check city is Kochi & Country is India\",function(){\r",
+              "    pm.expect(jsonData.name).to.eql(\"Kochi\");\r",
+              "    pm.expect(jsonData.sys.country).to.eql(\"IN\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"check respponse time\",function(){\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/weather?q=Kochi&appid={{apiKey}}&{{units}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "weather"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "Kochi"
+            },
+            {
+              "key": "appid",
+              "value": "{{apiKey}}"
+            },
+            {
+              "key": "{{units}}",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get 5-Day Forecast for Kochi",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "let jsonData=pm.response.json();\r",
+              "\r",
+              "pm.test(\"Checking 40 data points\", function(){\r",
+              "    pm.expect(jsonData.list).to.be.an('array');\r",
+              "    pm.expect(jsonData.cnt).to.equal(40);\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Verify forecast items contain valid weather arrays\", function () {\r",
+              "    \r",
+              "    pm.expect(jsonData.list[0].weather[0].main).to.be.a('string');\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/forecast?q=Kochi&appid={{apiKey}}&{{units}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "forecast"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "Kochi"
+            },
+            {
+              "key": "appid",
+              "value": "{{apiKey}}"
+            },
+            {
+              "key": "{{units}}",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid City Name Handling",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Status code is 404\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});\r",
+              "\r",
+              "let jsonData=pm.response.json();\r",
+              "\r",
+              "pm.test(\"Checking city\",function(){\r",
+              "    pm.expect(jsonData.message).to.eql(\"city not found\");\r",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/weather?q=InvalidCityNameXYZ123&appid={{apiKey}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "weather"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "InvalidCityNameXYZ123"
+            },
+            {
+              "key": "appid",
+              "value": "{{apiKey}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid API Key Handling",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "let jsonData=pm.response.json();\r",
+              "\r",
+              "pm.test(\"Check for Error message\",function(){\r",
+              "    pm.expect(jsonData.message).to.include(\"Invalid API key\");\r",
+              "})\r",
+              "\r",
+              "pm.test(\"Check for Error message\", function () {\r",
+              "    pm.expect(jsonData.cod).to.equal(401);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/weather?q=Kochi&appid=INVALID_KEY_12345",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "weather"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "Kochi"
+            },
+            {
+              "key": "appid",
+              "value": "INVALID_KEY_12345"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
