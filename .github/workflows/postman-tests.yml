@@ -5,7 +5,7 @@ on:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   test-api:
@@ -28,15 +28,16 @@ jobs:
         env:
           API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
         run: |
+          mkdir -p public
           newman run weather-api-tests.postman_collection.json \
             -e weather-API-Env.postman_environment.json \
             --env-var "apiKey=${API_KEY}" \
             -r cli,htmlextra \
-            --reporter-htmlextra-export newman/report.html
+            --reporter-htmlextra-export public/index.html
 
       - name: Upload Test Report Artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: postman-html-report
-          path: newman/report.html
+          path: public/index.html
